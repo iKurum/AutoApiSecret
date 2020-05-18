@@ -22,7 +22,7 @@ def gettoken(refresh_token):
           'code': refresh_token,
           'client_id':id,
           'client_secret':secret,
-          'scope':'user.read mail.read',
+          'scope':'offline_access user.read mail.read',
           'redirect_uri':'http://localhost:3000'
          }
     html = req.post('https://login.microsoftonline.com/common/oauth2/v2.0/token',data=data,headers=headers)
@@ -50,12 +50,12 @@ def main():
         if req.get(r'https://graph.microsoft.com/v1.0/me/drive',headers=headers).status_code == 200:
             num1+=1
             print("2调用成功"+str(num1)+'次')
-        if req.get(r'https://graph.microsoft.com/v1.0/drive/root',headers=headers).status_code == 200:
-            num1+=1
-            print('3调用成功'+str(num1)+'次')
-        if req.get(r'https://graph.microsoft.com/v1.0/users ',headers=headers).status_code == 200:
-            num1+=1
-            print('4调用成功'+str(num1)+'次')
+       # if req.get(r'https://graph.microsoft.com/v1.0/drive/root',headers=headers).status_code == 200:
+       #     num1+=1
+       #     print('3调用成功'+str(num1)+'次')
+       #if req.get(r'https://graph.microsoft.com/v1.0/users ',headers=headers).status_code == 200:
+       #     num1+=1
+       #     print('4调用成功'+str(num1)+'次')
         if req.get(r'https://graph.microsoft.com/v1.0/me/messages',headers=headers).status_code == 200:
             num1+=1
             print('5调用成功'+str(num1)+'次')    
