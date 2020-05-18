@@ -18,10 +18,11 @@ num1 = 0
 def gettoken(refresh_token):
     headers={'Content-Type':'application/x-www-form-urlencoded'
             }
-    data={'grant_type': 'refresh_token',
-          'refresh_token': refresh_token,
+    data={'grant_type': 'authorization_code',
+          'code': refresh_token,
           'client_id':id,
           'client_secret':secret,
+          'scope':'user.read mail.read',
           'redirect_uri':'http://localhost:3000'
          }
     html = req.post('https://login.microsoftonline.com/common/oauth2/v2.0/token',data=data,headers=headers)
