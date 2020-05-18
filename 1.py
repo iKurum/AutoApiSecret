@@ -27,11 +27,11 @@ def gettoken(refresh_token):
          }
     html = req.post('https://login.microsoftonline.com/common/oauth2/v2.0/token',data=data,headers=headers)
     jsontxt = json.loads(html.text)
-    refresh_token = jsontxt['refresh_token']
-    access_token = jsontxt['access_token']
+    refresh = jsontxt['refresh_token']
+    access = jsontxt['access_token']
     with open(path, 'w+') as f:
-        f.write(refresh_token)
-    return access_token
+        f.write(refresh)
+    return access
 def main():
     fo = open(path, "r+")
     refresh_token = fo.read()
