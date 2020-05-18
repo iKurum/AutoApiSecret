@@ -37,7 +37,7 @@ def main():
     fo = open(path, "r+")
     refresh_token = fo.read()
     fo.close()
-    #print(refresh_token)
+    print(refresh_token)
     global num1
     localtime = time.asctime( time.localtime(time.time()) )
     access_token=gettoken(refresh_token)
@@ -52,12 +52,12 @@ def main():
         if req.get(r'https://graph.microsoft.com/v1.0/me/drive',headers=headers).status_code == 200:
             num1+=1
             print("2调用成功"+str(num1)+'次')
-       # if req.get(r'https://graph.microsoft.com/v1.0/drive/root',headers=headers).status_code == 200:
-       #     num1+=1
-       #     print('3调用成功'+str(num1)+'次')
-       #if req.get(r'https://graph.microsoft.com/v1.0/users ',headers=headers).status_code == 200:
-       #     num1+=1
-       #     print('4调用成功'+str(num1)+'次')
+        if req.get(r'https://graph.microsoft.com/v1.0/drive/root',headers=headers).status_code == 200:
+            num1+=1
+            print('3调用成功'+str(num1)+'次')
+        if req.get(r'https://graph.microsoft.com/v1.0/users ',headers=headers).status_code == 200:
+            num1+=1
+            print('4调用成功'+str(num1)+'次')
         if req.get(r'https://graph.microsoft.com/v1.0/me/messages',headers=headers).status_code == 200:
             num1+=1
             print('5调用成功'+str(num1)+'次')    
